@@ -7,20 +7,74 @@ print('''
          7| 8| 9
       ''')
 
-def update_board():
-    board = [['','',''],['','',''],['','','']]
-    return board
+board = [['','',''],['','',''],['','','']]
+
+def update_board(board):
+    
+    print_board(board)
 
 def print_board(board):
     for item in board:
         print(item)
 
-def player_one():
-    pass
-def player_two():
-    pass
+def winner(board):
+    if board[0][0] == 'O' and board[0][1] == 'O' and board[0][2] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[1][0] == 'O' and board[1][1] == 'O' and board[1][2] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[2][0] == 'O' and board[2][1] == 'O' and board[2][2] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[0][0] == 'O' and board[1][0] == 'O' and board[2][0] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[0][1] == 'O' and board[1][1] == 'O' and board[2][1] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[0][2] == 'O' and board[1][2] == 'O' and board[2][2] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[0][0] == 'O' and board[1][1] == 'O' and board[2][2] == 'O':
+        print('Player Two Wins!')
+        return True
+    elif board[0][2] == 'O' and board[1][1] == 'O' and board[2][0] == 'O':
+        print('Player Two Wins!')
+        return True
+    if board[0][0] == 'X' and board[0][1] == 'X' and board[0][2] == 'X':
+        print('Player One Wins!')
+        return True
+    elif board[1][0] == 'X' and board[1][1] == 'X' and board[1][2] == 'X':
+        print('Player One Wins!')
+        return True
+    elif board[2][0] == 'X' and board[2][1] == 'X' and board[2][2] == 'X':
+        print('Player One Wins!')
+        return True
+    elif board[0][0] == 'X' and board[1][0] == 'X' and board[2][0] == 'X':
+        print('Player One Wins!')
+        return True
+    elif board[0][1] == 'X' and board[1][1] == 'X' and board[2][1] == 'X':
+        print('Player One Wins!')
+        return True
+    elif board[0][2] == 'X' and board[1][2] == 'X' and board[2][2] == 'X':
+        print('Player Two Wins!')
+        return True
+    elif board[0][0] == 'X' and board[1][1] == 'X' and board[2][2] == 'X':
+        print('Player Two Wins!')
+        return True
+    elif board[0][2] == 'X' and board[1][1] == 'X' and board[2][0] == 'X':
+        print('Player Two Wins!')
+        return True
+    
+    
 
-def play_game():
+def player_one():
+    print('One')
+def player_two():
+    print('Two')
+
+def player_turn():
     turn = 1
     if turn%2 == 0:
         player_two()
