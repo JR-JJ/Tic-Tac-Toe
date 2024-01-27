@@ -1,5 +1,6 @@
 print('Welcome to our game of Tic-Tac-Toe!')
 print('Here is an initial view of the board with positions to choose from.')
+print('Player One will be X, and Player Two will be O.')
 
 print('''
         _1|_2|_3
@@ -9,8 +10,12 @@ print('''
 
 board = [['','',''],['','',''],['','','']]
 
-def update_board(board):
-    
+def update_board(board,x,y,c):
+    if not board[x][y]:
+        board[x][y].append(c)
+    else:
+        print('Spot is taken')
+        player_turn()
     print_board(board)
 
 def print_board(board):
@@ -66,17 +71,64 @@ def winner(board):
     elif board[0][2] == 'X' and board[1][1] == 'X' and board[2][0] == 'X':
         print('Player Two Wins!')
         return True
+    else:
+        return False
     
     
 
 def player_one():
-    print('One')
+    choice = input('Position choice: ')
+    if choice == 1:
+        update_board(board, 0, 0, 'X')
+    elif choice == 2:
+        update_board(board, 0, 1, 'X')
+    elif choice == 3:
+        update_board(board, 0, 2, 'X')
+    elif choice == 4:
+        update_board(board, 1, 0, 'X')
+    elif choice == 5:
+        update_board(board, 1, 1, 'X')
+    elif choice == 6:
+        update_board(board, 1, 2, 'X')
+    elif choice == 7:
+        update_board(board, 2, 0, 'X')
+    elif choice == 8:
+        update_board(board, 2, 1, 'X')
+    elif choice == 9:
+        update_board(board, 2, 2, 'X')
+    else:
+        print('Please try again')
+        player_one()
+
 def player_two():
-    print('Two')
+    choice = input('Position choice: ')
+    if choice == 1:
+        update_board(board, 0, 0, 'O')
+    elif choice == 2:
+        update_board(board, 0, 1, 'O')
+    elif choice == 3:
+        update_board(board, 0, 2, 'O')
+    elif choice == 4:
+        update_board(board, 1, 0, 'O')
+    elif choice == 5:
+        update_board(board, 1, 1, 'O')
+    elif choice == 6:
+        update_board(board, 1, 2, 'O')
+    elif choice == 7:
+        update_board(board, 2, 0, 'O')
+    elif choice == 8:
+        update_board(board, 2, 1, 'O')
+    elif choice == 9:
+        update_board(board, 2, 2, 'O')
+    else:
+        print('Please try again')
+        player_two()
 
 def player_turn():
     turn = 1
-    if turn%2 == 0:
-        player_two()
-    else:
-        player_one()
+    win = False
+    while win == False:
+        if turn%2 == 0:
+            player_two()
+        else:
+            player_one()
