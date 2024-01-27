@@ -15,4 +15,14 @@ def print_board(board):
     for item in board:
         print(item)
 
-print_board(update_board())
+def player_one():
+    pass
+def player_two():
+    pass
+
+def play_game():
+    turn = 1
+    if turn%2 == 0:
+        player_two()
+    else:
+        player_one()
