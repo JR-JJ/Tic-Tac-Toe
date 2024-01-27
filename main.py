@@ -12,10 +12,11 @@ board = [['','',''],['','',''],['','','']]
 
 def update_board(board,x,y,c):
     if not board[x][y]:
-        board[x][y].append(c)
+        board[x][y] = c
     else:
         print('Spot is taken')
         player_turn()
+    winner(board)
     print_board(board)
 
 def print_board(board):
@@ -77,48 +78,49 @@ def winner(board):
     
 
 def player_one():
-    choice = input('Position choice: ')
-    if choice == 1:
+    choice = input('P1 - Position choice: ')
+
+    if choice == '1':
         update_board(board, 0, 0, 'X')
-    elif choice == 2:
+    elif choice == '2':
         update_board(board, 0, 1, 'X')
-    elif choice == 3:
+    elif choice == '3':
         update_board(board, 0, 2, 'X')
-    elif choice == 4:
+    elif choice == '4':
         update_board(board, 1, 0, 'X')
-    elif choice == 5:
+    elif choice == '5':
         update_board(board, 1, 1, 'X')
-    elif choice == 6:
+    elif choice == '6':
         update_board(board, 1, 2, 'X')
-    elif choice == 7:
+    elif choice == '7':
         update_board(board, 2, 0, 'X')
-    elif choice == 8:
+    elif choice == '8':
         update_board(board, 2, 1, 'X')
-    elif choice == 9:
+    elif choice == '9':
         update_board(board, 2, 2, 'X')
     else:
         print('Please try again')
         player_one()
 
 def player_two():
-    choice = input('Position choice: ')
-    if choice == 1:
+    choice = input('P2 - Position choice: ')
+    if choice == '1':
         update_board(board, 0, 0, 'O')
-    elif choice == 2:
+    elif choice == '2':
         update_board(board, 0, 1, 'O')
-    elif choice == 3:
+    elif choice == '3':
         update_board(board, 0, 2, 'O')
-    elif choice == 4:
+    elif choice == '4':
         update_board(board, 1, 0, 'O')
-    elif choice == 5:
+    elif choice == '5':
         update_board(board, 1, 1, 'O')
-    elif choice == 6:
+    elif choice == '6':
         update_board(board, 1, 2, 'O')
-    elif choice == 7:
+    elif choice == '7':
         update_board(board, 2, 0, 'O')
-    elif choice == 8:
+    elif choice == '8':
         update_board(board, 2, 1, 'O')
-    elif choice == 9:
+    elif choice == '9':
         update_board(board, 2, 2, 'O')
     else:
         print('Please try again')
@@ -127,8 +129,12 @@ def player_two():
 def player_turn():
     turn = 1
     win = False
-    while win == False:
+    while win == winner(board):
         if turn%2 == 0:
             player_two()
+            turn += 1
         else:
             player_one()
+            turn += 1
+
+player_turn()
